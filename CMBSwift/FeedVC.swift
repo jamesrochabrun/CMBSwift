@@ -10,23 +10,32 @@ import UIKit
 import  CoreData
 
 class FeedVC: UICollectionViewController {
+    
+    lazy var fetchedhResultController: NSFetchedResultsController<NSFetchRequestResult> = {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: TeamMember.self))
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.sharedInstance.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+      //  frc.delegate = self
+        return frc
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.backgroundColor = .yellow
         collectionView?.register(TeamMembercell.self)
+        getFeed(fromService: TeamService())
+    }
+    
+    func getFeed<S: Gettable>(fromService service: S) where S.T == [[String : String]] {
         
-        let service = TeamService()
-        service.get { (result) in
-            dump(result)
+        service.get { [weak self] (result) in
             switch result {
             case .Success(let json):
-                self.clearData()
-               // self.saveInCoreDataWith(array: json)
+                self?.clearData()
+                self?.saveInCoreDataWith(array: json)
             case .Error(let error):
                 print(error)
             }
-
         }
     }
     
@@ -54,7 +63,6 @@ class FeedVC: UICollectionViewController {
         }
     }
     
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 50
     }
@@ -66,70 +74,6 @@ class FeedVC: UICollectionViewController {
         return cell
         
     }
-}
-
-
-
-struct JSONDownloader {
-    
-    typealias JSON = [[String: String]]
-    typealias JSONTaskCompletionHandler = (Result<JSON>) -> Void
-    
-    func jsonTaskFrom(path: String, completionHandler completion: @escaping JSONTaskCompletionHandler) {
-        
-        if let content = NSData.init(contentsOfFile: path) {
-            do {
-                if let json = try JSONSerialization.jsonObject(with: content as Data, options: []) as? [[String: String]] {
-                    completion(.Success(json))
-                }
-            } catch {
-                completion(.Error(.invalidJSON))
-            }
-        }
-    }
-}
-
-
-enum Result <T>{
-    case Success(T)
-    case Error(PathError)
-}
-
-enum PathError: Error {
-    case invalidPath
-    case invalidJSON
-}
-
-struct TeamService: Gettable {
-    
-    let downloader = JSONDownloader()
-    
-    typealias TeamMembersCompletionHandler = (Result<[[String: String]]>) -> Void
-    
-    func get(completion: @escaping TeamMembersCompletionHandler) {
-        
-        guard let filePath = Bundle.main.path(forResource: "team", ofType: "json") else {
-            completion(.Error(.invalidPath))
-            return
-        }
-        downloader.jsonTaskFrom(path: filePath) { (result) in
-            switch result {
-            case .Success(let json):
-                completion(.Success(json))
-            case .Error(let error):
-                print(error)
-                completion(.Error(error))
-            }
-        }
-    }
-
-}
-
-
-
-protocol Gettable {
-    associatedtype T
-    func get(completion: @escaping (Result<T>) -> Void)
 }
 
 

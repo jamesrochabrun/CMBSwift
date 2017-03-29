@@ -20,6 +20,10 @@
 		7B5EE1FE1E8B4FD0002F8CA1 /* TeamMember+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EE1FC1E8B4FD0002F8CA1 /* TeamMember+CoreDataClass.swift */; };
 		7B5EE1FF1E8B4FD0002F8CA1 /* TeamMember+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EE1FD1E8B4FD0002F8CA1 /* TeamMember+CoreDataProperties.swift */; };
 		7B5EE2241E8B5124002F8CA1 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EE2231E8B5124002F8CA1 /* CoreDataStack.swift */; };
+		7B5EE2261E8B689D002F8CA1 /* JSONDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EE2251E8B689D002F8CA1 /* JSONDownloader.swift */; };
+		7B5EE2281E8B68DE002F8CA1 /* TeamService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EE2271E8B68DE002F8CA1 /* TeamService.swift */; };
+		7B5EE22A1E8B6925002F8CA1 /* Gettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EE2291E8B6925002F8CA1 /* Gettable.swift */; };
+		7B5EE22C1E8B6C52002F8CA1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EE22B1E8B6C52002F8CA1 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,10 @@
 		7B5EE1FC1E8B4FD0002F8CA1 /* TeamMember+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TeamMember+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7B5EE1FD1E8B4FD0002F8CA1 /* TeamMember+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TeamMember+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7B5EE2231E8B5124002F8CA1 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		7B5EE2251E8B689D002F8CA1 /* JSONDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDownloader.swift; sourceTree = "<group>"; };
+		7B5EE2271E8B68DE002F8CA1 /* TeamService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamService.swift; sourceTree = "<group>"; };
+		7B5EE2291E8B6925002F8CA1 /* Gettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gettable.swift; sourceTree = "<group>"; };
+		7B5EE22B1E8B6C52002F8CA1 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				7B5EE2231E8B5124002F8CA1 /* CoreDataStack.swift */,
+				7B5EE22B1E8B6C52002F8CA1 /* Extensions.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -131,6 +140,8 @@
 		7B5EE1ED1E8B294F002F8CA1 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				7B5EE2251E8B689D002F8CA1 /* JSONDownloader.swift */,
+				7B5EE2271E8B68DE002F8CA1 /* TeamService.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -148,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				7B5EE1F41E8B35CC002F8CA1 /* Reusable.swift */,
+				7B5EE2291E8B6925002F8CA1 /* Gettable.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -226,8 +238,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B5EE1F51E8B35CC002F8CA1 /* Reusable.swift in Sources */,
+				7B5EE22A1E8B6925002F8CA1 /* Gettable.swift in Sources */,
 				7B5EE1F71E8B3B76002F8CA1 /* CustomLayout.swift in Sources */,
 				7B5EE1FF1E8B4FD0002F8CA1 /* TeamMember+CoreDataProperties.swift in Sources */,
+				7B5EE2261E8B689D002F8CA1 /* JSONDownloader.swift in Sources */,
+				7B5EE2281E8B68DE002F8CA1 /* TeamService.swift in Sources */,
 				7B5EE1F01E8B29DB002F8CA1 /* BaseCell.swift in Sources */,
 				7B5EE1DA1E8B2811002F8CA1 /* CMBSwift.xcdatamodeld in Sources */,
 				7B5EE2241E8B5124002F8CA1 /* CoreDataStack.swift in Sources */,
@@ -235,6 +250,7 @@
 				7B5EE1D41E8B2811002F8CA1 /* FeedVC.swift in Sources */,
 				7B5EE1D21E8B2811002F8CA1 /* AppDelegate.swift in Sources */,
 				7B5EE1F21E8B29FB002F8CA1 /* TeamMemberCell.swift in Sources */,
+				7B5EE22C1E8B6C52002F8CA1 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
