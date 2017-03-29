@@ -3,26 +3,52 @@
 //  CMBSwift
 //
 //  Created by James Rochabrun on 3/28/17.
-//  Copyright © 2017 James Rochabrun. All rights reserved.
-//
+//  Copyright © 2017 James Rochabrun. All rights reserved.//
 
 import UIKit
 import  CoreData
 
-class FeedVC: UICollectionViewController {
+class FeedVC: UITableViewController {
     
     lazy var fetchedhResultController: NSFetchedResultsController<NSFetchRequestResult> = {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: TeamMember.self))
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+        fetchRequest.returnsObjectsAsFaults = false
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastName", ascending: true)]
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.sharedInstance.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-      //  frc.delegate = self
+        frc.delegate = self
         return frc
+    }()
+    
+    lazy var topView: BaseView = {
+        let tv = BaseView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        tv.backgroundColor = UIColor.hexStringToUIColor(Constants.Colors.blueColor)
+        return tv
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView?.backgroundColor = .yellow
-        collectionView?.register(TeamMembercell.self)
+        tableView?.backgroundColor = UIColor.hexStringToUIColor(Constants.Colors.backGroundColor)
+        tableView?.register(TeamMemberCell.self)
+        tableView.separatorStyle = .none
+        updateTableContent()
+    }
+    
+    func setUpViews() {
+        view.addSubview(topView)
+        topView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        topView.heightAnchor.constraint(equalToConstant: Constants.UI.statusBarHeight).isActive = true
+        topView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        topView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+    }
+    
+    func updateTableContent() {
+        
+        do {
+            try self.fetchedhResultController.performFetch()
+            print("COUNT FETCHED FIRST: \(self.fetchedhResultController.sections?[0].numberOfObjects)")
+        } catch let error  {
+            print("ERROR: \(error)")
+        }
         getFeed(fromService: TeamService())
     }
     
@@ -63,18 +89,66 @@ class FeedVC: UICollectionViewController {
         }
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let count = fetchedhResultController.sections?.first?.numberOfObjects {
+            return count
+        }
+        return 0
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as TeamMembercell
-        cell.backgroundColor = .red
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as TeamMemberCell
+        if let teamMate = fetchedhResultController.object(at: indexPath) as? TeamMember {      
+            let teamModel = TeamViewModel(teamMember: teamMate)
+            cell.setCellWith(model: teamModel)
+        }
         return cell
-        
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return view.frame.width
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+       return topView
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return Constants.UI.statusBarHeight
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = TeamMemberDetailVC()
+        if let teamMember = self.fetchedhResultController.object(at: indexPath) as? TeamMember {
+            detailVC.teamMember = teamMember
+            self.present(detailVC, animated: true)
+        }
     }
 }
+
+extension FeedVC: NSFetchedResultsControllerDelegate {
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+        case .insert:
+            self.tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        case .delete:
+            self.tableView.deleteRows(at: [indexPath!], with: .automatic)
+        default:
+            break
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableView.endUpdates()
+    }
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+}
+
 
 
 

@@ -19,10 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        let layout = GridLayout()
-        let feedVC = FeedVC(collectionViewLayout: layout)
-        window?.rootViewController = UINavigationController(rootViewController: feedVC)
+        let feedVC = FeedVC()
+        window?.rootViewController = feedVC
         CoreDataStack.sharedInstance.applicationDocumentsDirectory()
+        UIApplication.shared.statusBarStyle = .lightContent
         return true
     }
 
