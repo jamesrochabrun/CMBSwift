@@ -35,6 +35,7 @@
 		7B5EE2421E8C7CF0002F8CA1 /* BioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EE2411E8C7CF0002F8CA1 /* BioCell.swift */; };
 		7B5EE2441E8C7D21002F8CA1 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EE2431E8C7D21002F8CA1 /* MainCell.swift */; };
 		7B5EE2461E8C8026002F8CA1 /* TeamMemberDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EE2451E8C8026002F8CA1 /* TeamMemberDataSource.swift */; };
+		7B5EE2481E8C8167002F8CA1 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EE2471E8C8167002F8CA1 /* FooterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		7B5EE2411E8C7CF0002F8CA1 /* BioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BioCell.swift; sourceTree = "<group>"; };
 		7B5EE2431E8C7D21002F8CA1 /* MainCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
 		7B5EE2451E8C8026002F8CA1 /* TeamMemberDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMemberDataSource.swift; sourceTree = "<group>"; };
+		7B5EE2471E8C8167002F8CA1 /* FooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 		7B5EE1E91E8B2934002F8CA1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7B5EE2471E8C8167002F8CA1 /* FooterView.swift */,
 				7B5EE23F1E8C7261002F8CA1 /* CustomDismissButton.swift */,
 				7B5EE2331E8C3751002F8CA1 /* BaseView.swift */,
 				7B5EE2351E8C413E002F8CA1 /* InfoView.swift */,
@@ -281,6 +284,7 @@
 				7B5EE1F01E8B29DB002F8CA1 /* BaseCell.swift in Sources */,
 				7B5EE2321E8C36F7002F8CA1 /* Constants.swift in Sources */,
 				7B5EE1DA1E8B2811002F8CA1 /* CMBSwift.xcdatamodeld in Sources */,
+				7B5EE2481E8C8167002F8CA1 /* FooterView.swift in Sources */,
 				7B5EE2241E8B5124002F8CA1 /* CoreDataStack.swift in Sources */,
 				7B5EE1FE1E8B4FD0002F8CA1 /* TeamMember+CoreDataClass.swift in Sources */,
 				7B5EE1D41E8B2811002F8CA1 /* FeedVC.swift in Sources */,

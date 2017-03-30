@@ -19,7 +19,7 @@ class FeedVC: UITableViewController {
         return frc
     }()
     
-    lazy var topView: BaseView = {
+    lazy var headerView: BaseView = {
         let tv = BaseView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         tv.backgroundColor = UIColor.hexStringToUIColor(Constants.Colors.blueColor)
         return tv
@@ -27,18 +27,10 @@ class FeedVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView?.backgroundColor = UIColor.hexStringToUIColor(Constants.Colors.backGroundColor)
+        tableView?.backgroundColor = UIColor.hexStringToUIColor(Constants.Colors.textWhiteColor)
         tableView?.register(TeamMemberCell.self)
         tableView.separatorStyle = .none
         updateTableContent()
-    }
-    
-    func setUpViews() {
-        view.addSubview(topView)
-        topView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        topView.heightAnchor.constraint(equalToConstant: Constants.UI.statusBarHeight).isActive = true
-        topView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        topView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
     }
     
     func updateTableContent() {
@@ -110,7 +102,7 @@ class FeedVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-       return topView
+       return headerView
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

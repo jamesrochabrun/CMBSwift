@@ -30,10 +30,16 @@ class TeamMemberDetailVC: UITableViewController {
         return miv
     }()
     
-    lazy var topView: BaseView = {
+    lazy var headerView: BaseView = {
         let tv = BaseView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         tv.backgroundColor = UIColor.hexStringToUIColor(Constants.Colors.blueColor)
         return tv
+    }()
+    
+    lazy var footerView: FooterView = {
+        let f = FooterView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100))
+        f.delegate = self
+        return f
     }()
     
     override func viewDidLoad() {
@@ -59,7 +65,7 @@ class TeamMemberDetailVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return topView
+        return headerView
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -69,8 +75,41 @@ class TeamMemberDetailVC: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.row == 0 ? view.frame.size.width : self.tableView.rowHeight
     }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return footerView
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return Constants.UI.footerbuttonHeight
+    }
 }
 
+extension MovieDetailVC: FooterViewDelegate {
+    
+    func showAlertControllerInVC() {
+        
+        print("hello")
+        
+//        let alertController = UIAlertController(title: "View on Itunes", message: "You are about to leave MoviesApp", preferredStyle: .alert)
+//        
+//        let goAction = UIAlertAction(title: "Go", style: .default) { (action) in
+//            if let movie = self.movie, let url = URL(string: movie.itunesURL) {
+//                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//            }
+//        }
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: {
+//            (action : UIAlertAction!) -> Void in
+//        })
+//        
+//        alertController.addAction(goAction)
+//        alertController.addAction(cancelAction)
+//        
+//        DispatchQueue.main.async {
+//            self.present(alertController, animated: true, completion: nil)
+//        }
+    }
+}
 
 
 
