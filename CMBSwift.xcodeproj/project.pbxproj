@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B3480231E8C8BE400C23A10 /* TeamMemberDetailVCAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3480221E8C8BE400C23A10 /* TeamMemberDetailVCAnimation.swift */; };
 		7B5EE1D21E8B2811002F8CA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EE1D11E8B2811002F8CA1 /* AppDelegate.swift */; };
 		7B5EE1D41E8B2811002F8CA1 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EE1D31E8B2811002F8CA1 /* FeedVC.swift */; };
 		7B5EE1DA1E8B2811002F8CA1 /* CMBSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EE1D81E8B2811002F8CA1 /* CMBSwift.xcdatamodeld */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B3480221E8C8BE400C23A10 /* TeamMemberDetailVCAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMemberDetailVCAnimation.swift; sourceTree = "<group>"; };
 		7B5EE1CE1E8B2811002F8CA1 /* CMBSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CMBSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5EE1D11E8B2811002F8CA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B5EE1D31E8B2811002F8CA1 /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			children = (
 				7B5EE1D31E8B2811002F8CA1 /* FeedVC.swift */,
 				7B5EE23D1E8C6834002F8CA1 /* TeamMemberDetailVC.swift */,
+				7B3480221E8C8BE400C23A10 /* TeamMemberDetailVCAnimation.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				7B5EE2481E8C8167002F8CA1 /* FooterView.swift in Sources */,
 				7B5EE2241E8B5124002F8CA1 /* CoreDataStack.swift in Sources */,
 				7B5EE1FE1E8B4FD0002F8CA1 /* TeamMember+CoreDataClass.swift in Sources */,
+				7B3480231E8C8BE400C23A10 /* TeamMemberDetailVCAnimation.swift in Sources */,
 				7B5EE1D41E8B2811002F8CA1 /* FeedVC.swift in Sources */,
 				7B5EE2441E8C7D21002F8CA1 /* MainCell.swift in Sources */,
 				7B5EE2461E8C8026002F8CA1 /* TeamMemberDataSource.swift in Sources */,
@@ -452,6 +456,7 @@
 				7B5EE1E51E8B2811002F8CA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
