@@ -45,7 +45,7 @@ class TeamMemberCell: BaseCell {
     func setCellWith(model: TeamViewModel) {
         infoView.teamMember = model
         if let avatar = model.avatar {
-            backgroundImageView.loadImageUsingCacheWithURLString(avatar, placeHolder: #imageLiteral(resourceName: "placeholder"))
+            backgroundImageView.loadImageUsingCacheWithURLString(avatar, placeHolder: nil)
         }
     }
 }

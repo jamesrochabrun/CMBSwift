@@ -20,7 +20,7 @@ class InfoView: BaseView {
                 self.titleLabel.text = title
             }
             if let avatarURL = teamMember?.avatar {
-                avatarImageView.loadImageUsingCacheWithURLString(avatarURL, placeHolder: #imageLiteral(resourceName: "placeholder"))
+                avatarImageView.loadImageUsingCacheWithURLString(avatarURL, placeHolder: nil)
             }
         }
     }

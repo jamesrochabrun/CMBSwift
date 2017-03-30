@@ -15,10 +15,10 @@ struct Constants {
         static let labelHeight: CGFloat = 20.0
         static let dividerLineHeight: CGFloat = 1.0
         static let cellPaddingVertical: CGFloat = 10.0
-        static let infoViewHeight: CGFloat = (Constants.UI.labelHeight * 2) + Constants.UI.dividerLineHeight + (Constants.UI.cellPaddingVertical * 3)
         static let statusBarHeight: CGFloat = 22.0
         static let dismissButtonWidth: CGFloat = 44.0
         static let dismissButtonHeight: CGFloat = 48.0
+        static let likeButtonHeight: CGFloat = 50.0
     }
     
     struct Colors {
